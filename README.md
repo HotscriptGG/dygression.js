@@ -1,5 +1,7 @@
 # dygression.js
 
+* This app is still in super early stage. Help me develop it if you wish and can. Cheers *
+
 ## What is it?
 Single thread chat with dygression system. So you can procrastinate while you work and work while you procrastinate.
 
