@@ -15,6 +15,7 @@ It is a private alternative with some special hidden interface focused features.
 
 ## Dependencies
 At this development stage there are some open source dependencies, like:
+- HTML5Bolierplate;
 - Bootstrap;
 - jQuery;
 - autobahn.js.
