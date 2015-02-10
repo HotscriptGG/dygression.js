@@ -7,4 +7,4 @@ It is NOT a slack or telegram comptetitor. Those are superb products. Do not try
 
 This is a implementation of different chatapp abstraction paradigm.
 
-It is a private alternative with some special hidden interface focused features
+It is a private alternative with some special hidden interface focused features. With specific threds operated from the keyboard vim-like style.
