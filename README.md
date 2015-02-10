@@ -11,7 +11,7 @@ It is NOT a slack or telegram comptetitor. Those are superb products. Do not try
 ## Philosphy
 As much vanilla javascript as possible. So you can use it as easy as possible.
 
-This is a implementation of different chatapp abstraction paradigm.
+This is an implementation of different chatapp abstraction paradigm.
 It is a private alternative with some special hidden interface focused features. With specific threds operated from the keyboard vim-like style.
 
 ## Dependencies
