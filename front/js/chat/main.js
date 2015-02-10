@@ -22,7 +22,18 @@ function Chat(options) {
     this.input = options.input;
     this.sendButton = options.sendButton;
     this.messages = [];
+    this.threads = [];
 }
+
+function Thread() {
+    this.messageContent = options.messageContent;
+    this.signature = this.messageContent.substr(0, 2);
+}
+
+Thread.prototype.getType = function() {
+    return true;
+}
+
 
 Chat.prototype.init = function() {
     var self = this;
@@ -58,7 +69,15 @@ Chat.prototype.sendMessage = function() {
     
     this.messages.push(messageObj);
     
+    this.checkThread();
+    
     this.clearMessageInput();
+    
+    console.log(this.messages);
+}
+
+Chat.prototype.checkThread = function() {
+    
 }
 
 Chat.prototype.clearMessageInput = function() {
