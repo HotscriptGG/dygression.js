@@ -49,16 +49,20 @@ Chat.prototype.init = function() {
 }
 
 Chat.prototype.sendMessage = function() {
-    var message = this.input.value;
-    console.log(message);
+    var messageContent = this.input.value;
     
     var messageObj = this.messageFactory.createMessage({
         authorId: 1,
-        content: message
+        content: messageContent
     });
     
     this.messages.push(messageObj);
-    console.log(this.messages);
+    
+    this.clearMessageInput();
+}
+
+Chat.prototype.clearMessageInput = function() {
+    this.input.value = "";
 }
 
 var config = {
