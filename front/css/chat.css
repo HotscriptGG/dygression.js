@@ -1,6 +1,7 @@
 #chat-window {
  margin: 3% auto;
- min-height: 450px;
+ height: 250px;
  border: 1px solid #ddd;
- border-radius: 5px
+ border-radius: 5px;
+ overflow-y: scroll;
 }

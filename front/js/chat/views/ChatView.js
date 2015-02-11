@@ -1,5 +1,6 @@
 function ChatView(options) {
     this.container = options.container;
+    this.chatWindow = options.chatWindow;
     this.input = options.input;
     this.sendButton = options.sendButton;
 }
@@ -42,5 +43,10 @@ ChatView.prototype.clearMessageInput = function() {
 }
 
 ChatView.prototype.render = function() {
-    console.log(this.chat.messages);
+    // @TODO
+    // Refactor
+    var newMessage = this.chat.messages.pop();
+    var messageView = new MessageView(newMessage);
+    this.chatWindow.appendChild(messageView.render());
+    this.chatWindow.scrollTop = this.chatWindow.scrollHeight;
 }
