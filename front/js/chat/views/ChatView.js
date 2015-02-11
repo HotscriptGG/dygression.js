@@ -7,13 +7,13 @@ function ChatView(options) {
 
 ChatView.prototype.init = function() {
     this.chat = new Chat();
-    // Subscribe to events in chat
-    // @TODO
-    // This implementation of PubSub looses scope
+    
+    // Event subscriptions
     EventBus.subscribe("message/new", this.render, this);
+    EventBus.subscribe("thread/new", this.broadcastNewTopic, this);
 
 
-    // Event listeners
+    // DOM Event listeners
     var self = this;
     if (this.sendButton) {
         this.sendButton.addEventListener("click", function(event) {
@@ -24,17 +24,10 @@ ChatView.prototype.init = function() {
 }
 
 ChatView.prototype.sendMessage = function() {
-    var messageContent = this.input.value;
-
-    var messageObj = this.chat.messageFactory.createMessage({
-        // @TODO
-        // Hardcoded authorId
-        authorId: 1,
-        content: messageContent
-    });
-
+    var messageContent = {content: this.input.value},
+        messageObj = this.chat.messageFactory.createMessage(messageContent);
+    
     this.chat.receiveMessage(messageObj);
-
     this.clearMessageInput();
 }
 
@@ -43,10 +36,13 @@ ChatView.prototype.clearMessageInput = function() {
 }
 
 ChatView.prototype.render = function() {
-    // @TODO
-    // Refactor
-    var newMessage = this.chat.messages.pop();
-    var messageView = new MessageView(newMessage);
+    var newMessage = this.chat.messages.pop(),
+        messageView = new MessageView(newMessage);
+    
     this.chatWindow.appendChild(messageView.render());
     this.chatWindow.scrollTop = this.chatWindow.scrollHeight;
+}
+
+ChatView.prototype.broadcastNewTopic = function() {
+    console.log(this.chat.threads.pop());
 }
