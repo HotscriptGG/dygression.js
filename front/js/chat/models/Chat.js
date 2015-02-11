@@ -12,6 +12,6 @@ function Chat(options) {
 
 Chat.prototype.receiveMessage = function(message) {
     this.messages.push(message);
-    
+
     EventBus.publish("message/new", message);
 }

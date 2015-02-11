@@ -5,21 +5,21 @@
 var EventBus = {
   topics: {},
 
-  subscribe: function(topic, listener) {
+  subscribe: function(topic, listener, ctx) {
     // create the topic if not yet created
-    if(!this.topics[topic]) {
+    if (!this.topics[topic]) {
         this.topics[topic] = [];
     }
 
     // add the listener
-    this.topics[topic].push(listener);
+    this.topics[topic].push(listener.bind(ctx));
     console.log(this.topics);
   },
 
   publish: function(topic, data) {
     // return if the topic doesn't exist, or there are no listeners
-    if(!this.topics[topic] || this.topics[topic].length < 1) {
-        return false;   
+    if (!this.topics[topic] || this.topics[topic].length < 1) {
+        return false;
     }
 
     // send the event to all listeners

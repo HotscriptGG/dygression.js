@@ -9,9 +9,9 @@ ChatView.prototype.init = function() {
     // Subscribe to events in chat
     // @TODO
     // This implementation of PubSub looses scope
-    EventBus.subscribe("message/new", this.render);
- 
-    
+    EventBus.subscribe("message/new", this.render, this);
+
+
     // Event listeners
     var self = this;
     if (this.sendButton) {
@@ -24,16 +24,16 @@ ChatView.prototype.init = function() {
 
 ChatView.prototype.sendMessage = function() {
     var messageContent = this.input.value;
-    
+
     var messageObj = this.chat.messageFactory.createMessage({
         // @TODO
         // Hardcoded authorId
         authorId: 1,
         content: messageContent
     });
-    
+
     this.chat.receiveMessage(messageObj);
-    
+
     this.clearMessageInput();
 }
 
@@ -42,5 +42,5 @@ ChatView.prototype.clearMessageInput = function() {
 }
 
 ChatView.prototype.render = function() {
-    console.log(this);
+    console.log(this.chat.messages);
 }
