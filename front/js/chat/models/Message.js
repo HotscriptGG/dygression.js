@@ -1,8 +1,8 @@
 "use strict";
 
 function Message(options) {
-	this.autorId = options.authorId;
 	this.content = options.content;
+    this.thread = options.thread || "";
 }
 
 // @TODO

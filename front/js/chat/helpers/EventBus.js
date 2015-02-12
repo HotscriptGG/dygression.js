@@ -5,14 +5,14 @@
 var EventBus = {
   topics: {},
 
-  subscribe: function(topic, listener, ctx) {
+  subscribe: function(topic, listener, context) {
     // create the topic if not yet created
     if (!this.topics[topic]) {
         this.topics[topic] = [];
     }
 
     // add the listener
-    this.topics[topic].push(listener.bind(ctx));
+    this.topics[topic].push(listener.bind(context));
     console.log(this.topics);
   },
 
