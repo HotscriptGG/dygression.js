@@ -20,4 +20,5 @@ At this development stage there are some open source dependencies, like:
 - Bootstrap;
 - jQuery;
 - autobahn.js;
+- jasmine.js;
 - require.js.
