@@ -8,10 +8,6 @@ function ChatView(options) {
 ChatView.prototype.init = function() {
     this.chat = new Chat();
 
-    // Subscribe to events in chat
-    EventBus.subscribe("message/new", this.renderMessages, this);
-    EventBus.subscribe("user/new", this.renderUsers, this);
-
     // Event subscriptions
     EventBus.subscribe("message/new", this.render, this);
     EventBus.subscribe("thread/new", this.broadcastNewTopic, this);
