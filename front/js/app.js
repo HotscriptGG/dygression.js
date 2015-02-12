@@ -10,7 +10,7 @@ define([
 
     "chat/views/ChatView",
     "chat/views/MessageView",
-    "chat/main"
+    "chat/main",
 ], function(){});
 
 // Features to do:
