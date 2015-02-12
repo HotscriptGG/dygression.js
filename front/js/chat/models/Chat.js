@@ -13,24 +13,18 @@ function Chat(options) {
 
 Chat.prototype.receiveMessage = function(message) {
     this.setThread(message);
-    
+
     this.messages.push(message);
 
     EventBus.publish("message/new", message);
 }
 
-<<<<<<< HEAD
-Chat.prototype.userConnect = function(user) {
-	this.users.push(user);
-
-	EventBus.publish("user/new");
-=======
 // @TODO
 // Refactoring: move to message
 Chat.prototype.setThread = function(message) {
     // @TODO
     // Refactoring: set if..else conditions to vars
-    
+
     var content = message.content;
     // When thread is described a word,
     // eg. `:cars Have you seen last TopGear...`
@@ -43,5 +37,4 @@ Chat.prototype.setThread = function(message) {
     }
     this.threads.push(thread);
     EventBus.publish("thread/new", thread);
->>>>>>> 90a34379c4102b634a7962757157546ac1a548fe
 }
