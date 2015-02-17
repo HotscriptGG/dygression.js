@@ -9,6 +9,7 @@ function Chat(options) {
     this.messages = [];
     this.threads = [];
     this.users = [];
+    this.socket = io();
 }
 
 Chat.prototype.receiveMessage = function(message) {
@@ -22,18 +23,15 @@ Chat.prototype.receiveMessage = function(message) {
 // @TODO
 // Refactoring: move to message
 Chat.prototype.setThread = function(message) {
-    // @TODO
-    // Refactoring: set if..else conditions to vars
-
-    var content = message.content;
-    // When thread is described a word,
-    // eg. `:cars Have you seen last TopGear...`
-    if (content.substr(0, 1) === ":") {
+    var content = message.content,
+        firstChar = content.substr(0, 1),
+        firstWord = content.substr(0, content.indexOf(" "));
+        
+    if (firstChar === ":") {
         var thread = content.substr(1, content.indexOf(" "));
-    // When thread is described by a shortcode,
-    // eg. `$$ Today beer is on me...`
-    } else if (/\W/.test(content.substr(0, content.indexOf(" ")))) {
-        var thread = content.substr(0, content.indexOf(" "));
+    // check if firstWord is made of letters :)
+    } else if (/\W/.test(firstWord)) {
+        var thread = firstWord;
     }
     this.threads.push(thread);
     EventBus.publish("thread/new", thread);

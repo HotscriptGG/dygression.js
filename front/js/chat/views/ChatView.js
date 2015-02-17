@@ -26,7 +26,9 @@ ChatView.prototype.sendMessage = function() {
     var messageContent = {content: this.input.value},
         messageObj = this.chat.messageFactory.createMessage(messageContent);
 
-    this.chat.receiveMessage(messageObj);
+    
+        
+    this.chat.socket.emit(messageObj);
     this.clearMessageInput();
 }
 
